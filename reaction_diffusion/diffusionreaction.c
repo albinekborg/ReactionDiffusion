@@ -20,33 +20,6 @@ int PADDED_N = N+2;
 void laplacian(float** u, float** v, float kernel[3][3], float** new_u, float** new_v) {
     int row, col, krow, kcol;
     float sum_u, sum_v;
-    // Wrapping
-    /* 
-    float ut, ub, ur, ul, vt, vb, vr, vl;
-    for (int ix = 0; ix < PADDED_N; ix++) {
-        // Handle left and right boundaries
-        ul = u[ix][(PADDED_N-2+N)%N+1];
-        ur = u[ix][2%N+1];
-        vl = v[ix][(PADDED_N-2+N)%N+1];
-        vr = v[ix][2%N+1];
-
-        // Handle top and bottom boundaries
-        ut = u[(PADDED_N-2+N)%N+1][ix];
-        ub = u[2%N+1][ix];
-        vt = v[(PADDED_N-2+N)%N+1][ix];
-        vb = v[2%N+1][ix];
-
-        // Calculate sum_u and sum_v using ut, ub, etc.
-        for (krow = -1; krow <= 1; krow++) {
-            for (kcol = -1; kcol <= 1; kcol++) {
-                sum_u += kernel[krow+1][kcol+1] * u[(row+krow+N)%N+1][(col+kcol+N)%N+1];
-                sum_v += kernel[krow+1][kcol+1] * v[(row+krow+N)%N+1][(col+kcol+N)%N+1];
-            }
-        }
-        new_u[row][col] = sum_u;
-        new_v[row][col] = sum_v;
-    } */
-    
     // Update the displayed field
     for (row = 1; row < N+1; row++) {
         for (col = 1; col < N+1; col++) {
